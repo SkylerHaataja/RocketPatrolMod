@@ -88,7 +88,7 @@ class Play extends Phaser.Scene {
     update() {
         
         // check key input for restart
-        if (Phaser.Input.Keyboard.JustDown(keyR)) {
+        if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.game.sound.stopAll();
             this.scene.restart();
         }

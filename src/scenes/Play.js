@@ -17,8 +17,8 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        var music = this.sound.add('soundtrack');
         // loop soundtrack
+        var music = this.sound.add('soundtrack');
         music.setLoop(true);
         music.play();
         // place tile sprite

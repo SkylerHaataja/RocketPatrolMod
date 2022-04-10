@@ -17,7 +17,7 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        var music = game.sound.add('soundtrack');
+        var music = this.sound.add('soundtrack');
         // loop soundtrack
         music.setLoop(true);
         music.play();
@@ -88,7 +88,7 @@ class Play extends Phaser.Scene {
     update() {
         
         // check key input for restart
-        if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
+        if (Phaser.Input.Keyboard.JustDown(keyR)) {
             this.game.sound.stopAll();
             this.scene.restart();
         }

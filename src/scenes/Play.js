@@ -22,15 +22,15 @@ class Play extends Phaser.Scene {
         music.setLoop(true);
         music.play();
         // place tile sprite
-        this.starfield = this.add.tileSprite(0, 0, 640*scale, 480*scale, 'starfield').setOrigin(0,0);
+        this.starfield = this.add.tileSprite(0, 0, 960, 720, 'starfield').setOrigin(0,0);
         /* The add.tileSprite() method expects five parameters: x-position, y-position,
            width, height, and a key string that tells us which image to use. */
         // green UI background
         
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x8080AF).setOrigin(0, 0);
         // add rocket (p1)
-        this.p1Rocket = new Rocket(this, (game.config.width/3), game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
-        this.p2Rocket = new Rocket2(this, (game.config.width/3) * 2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
+        this.p1Rocket = new Rocket(this, (game.config.width/3), game.config.height - borderUISize - borderPadding-5, 'rocket').setOrigin(0.5, 0);
+        this.p2Rocket = new Rocket2(this, (game.config.width/3) * 2, game.config.height - borderUISize - borderPadding -5, 'rocket').setOrigin(0.5, 0);
         // add spaceships (x3)
         this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4, 'spaceship', 0, 30).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2, 'spaceship', 0, 20).setOrigin(0, 0);

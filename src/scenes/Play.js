@@ -8,7 +8,7 @@ class Play extends Phaser.Scene {
         // load images/tile/sprites
         this.load.image('snapper', './assets/snapper.png');
         this.load.image('chest', './assets/chest.png');
-        this.load.image('swordfish', './assets/swordfish.png');
+        this.load.image('swordfish', './assets/swordFish.png');
         this.load.image('flounder', './assets/flounder.png');
         this.load.image('background', './assets/background.png');
         this.load.image('forground', './assets/forground.png');

@@ -137,38 +137,36 @@ class Play extends Phaser.Scene {
             this.Flounder.update();
         } 
         // check collisions
-        if(this.checkCollision(this.p1Rocket, this.Flounder) && Math.abs(this.Flounder.y-this.p1Rocket.y)<64) {
-            console.log("rocket y: " + this.p1Rocket.y);
-            console.log("spaceship y: " + this.Flounder.y);
+        if(this.checkCollision(this.p1Rocket, this.Flounder) && Math.abs(this.Flounder.y-this.p1Rocket.y)<64 && this.Flounder.canHit == true) {
             this.p1Rocket.reset();
             this.shipExplode(this.Flounder);   
         }
-        if (this.checkCollision(this.p1Rocket, this.Swordfish) && Math.abs(this.Swordfish.y-this.p1Rocket.y)<64) {
+        if (this.checkCollision(this.p1Rocket, this.Swordfish) && Math.abs(this.Swordfish.y-this.p1Rocket.y)<64 && this.Swordfish.canHit == true) {
             this.p1Rocket.reset();
             this.shipExplode(this.Swordfish);
         }
-        if (this.checkCollision(this.p1Rocket, this.Snapper) && Math.abs(this.Snapper.y-this.p1Rocket.y)<64) {
+        if (this.checkCollision(this.p1Rocket, this.Snapper) && Math.abs(this.Snapper.y-this.p1Rocket.y)<64 && this.Snapper.canHit == true) {
             this.p1Rocket.reset();
             this.shipExplode(this.Snapper);
         }
-        if (this.checkCollision(this.p1Rocket, this.Chest) && Math.abs(this.Chest.y-this.p1Rocket.y)<64) {
+        if (this.checkCollision(this.p1Rocket, this.Chest) && Math.abs(this.Chest.y-this.p1Rocket.y)<64 && this.Chest.canHit == true) {
             this.p1Rocket.reset();
             this.shipExplode(this.Chest);
         }
 
-        if(this.checkCollision(this.p2Rocket, this.Flounder) && Math.abs(this.Flounder.y-this.p2Rocket.y)<64) {
+        if(this.checkCollision(this.p2Rocket, this.Flounder) && Math.abs(this.Flounder.y-this.p2Rocket.y)<64 && this.Flounder.canHit == true) {
             this.p2Rocket.reset();
             this.shipExplode2(this.Flounder);   
         }
-        if (this.checkCollision(this.p2Rocket, this.Swordfish) && Math.abs(this.Swordfish.y-this.p2Rocket.y)<64) {
+        if (this.checkCollision(this.p2Rocket, this.Swordfish) && Math.abs(this.Swordfish.y-this.p2Rocket.y)<64 && this.Swordfish.canHit == true) {
             this.p2Rocket.reset();
             this.shipExplode2(this.Swordfish);
         }
-        if (this.checkCollision(this.p2Rocket, this.Snapper) && Math.abs(this.Snapper.y-this.p2Rocket.y)<64) {
+        if (this.checkCollision(this.p2Rocket, this.Snapper) && Math.abs(this.Snapper.y-this.p2Rocket.y)<64 && this.Snapper.canHit == true) {
             this.p2Rocket.reset();
             this.shipExplode2(this.Snapper);
         }
-        if (this.checkCollision(this.p2Rocket, this.Chest) && Math.abs(this.Chest.y-this.p2Rocket.y)<64) {
+        if (this.checkCollision(this.p2Rocket, this.Chest) && Math.abs(this.Chest.y-this.p2Rocket.y)<64 && this.Chest.canHit == true) {
             this.p2Rocket.reset();
             this.shipExplode(this.Chest);
         }
@@ -194,6 +192,7 @@ class Play extends Phaser.Scene {
     shipExplode(ship) {
         // temporarily hide ship
         this.sound.play('sfx_bloop', {volume: 0.4});
+        ship.canHit = false;
         ship.alpha = 0;
         // create explosion sprite at ship's position
         let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(.25, .25);
@@ -202,6 +201,7 @@ class Play extends Phaser.Scene {
             ship.reset();                         // reset ship position
             ship.alpha = 1;                       // make ship visible again
             boom.destroy();                       // remove explosion sprite
+            ship.canHit = true;
         });       
         // score add and repaint
         this.p1Score += ship.points;
@@ -210,6 +210,7 @@ class Play extends Phaser.Scene {
     shipExplode2(ship) {
         // temporarily hide ship
         this.sound.play('sfx_bloop', {volume: 0.4});
+        ship.canHit = false;
         ship.alpha = 0;
         // create explosion sprite at ship's position
         let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(.25, .25);
@@ -218,6 +219,7 @@ class Play extends Phaser.Scene {
             ship.reset();                         // reset ship position
             ship.alpha = 1;                       // make ship visible again
             boom.destroy();                       // remove explosion sprite
+            ship.canHit = true;
         });       
         // score add and repaint
         this.p2Score += ship.points;

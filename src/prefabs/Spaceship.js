@@ -5,6 +5,7 @@ class Spaceship extends Phaser.GameObjects.Sprite {
         this.points = pointValue;
         this.moveSpeed = game.settings.spaceshipSpeed;
         this.val = 0;
+        this.canHit = true;
 
     }
 

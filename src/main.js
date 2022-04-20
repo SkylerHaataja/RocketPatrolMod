@@ -1,10 +1,10 @@
 
 let config = {
     type: Phaser.AUTO,
-    width: 620,
-    height: 360,
+    width: 960,
+    height: 640,
     scene: [ Menu, Play ],
-    zoom: 2,
+    zoom: 1,
     pixelArt: true,
     physics: {
         default: 'arcade',
@@ -12,7 +12,9 @@ let config = {
           tileBias: 4,
           gravity: { y: 250 },
         }
-      },
+    },
+    autoCenter: Phaser.Scale.Center,
+    
 }
 let game = new Phaser.Game(config);
 

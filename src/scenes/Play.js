@@ -49,6 +49,7 @@ class Play extends Phaser.Scene {
         this.Swordfish = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 4 + borderPadding * 2, 'swordfish', 0, 20).setOrigin(0, 0);
         this.Flounder = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'flounder', 0, 10).setOrigin(0,0);
         this.Chest = new Spaceship(this, game.config.width*6, borderUISize * 2 - 35, 'chest', 0, 100).setOrigin(0, 0).setScale(.75);
+        this.Chest.moveSpeed = game.settings.spaceshipSpeed*1.5;
         // define keys
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -192,7 +193,7 @@ class Play extends Phaser.Scene {
 
     shipExplode(ship) {
         // temporarily hide ship
-        this.sound.play('sfx_explosion', {volume: 0.4});
+        this.sound.play('sfx_bloop', {volume: 0.4});
         ship.alpha = 0;
         // create explosion sprite at ship's position
         let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(.25, .25);
@@ -208,7 +209,7 @@ class Play extends Phaser.Scene {
     }
     shipExplode2(ship) {
         // temporarily hide ship
-        this.sound.play('sfx_explosion', {volume: 0.4});
+        this.sound.play('sfx_bloop', {volume: 0.4});
         ship.alpha = 0;
         // create explosion sprite at ship's position
         let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(.25, .25);
